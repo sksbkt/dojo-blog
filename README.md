@@ -1,2 +1,2 @@
-# first react app
+# Dojo blog
 a small blogging app, based on js
