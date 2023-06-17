@@ -1,15 +1,20 @@
-import { useHistory, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useFetch from "../../Helpers/useFetch";
 
 const BlogDetails = () => {
-
     const { id } = useParams();
-    const { data: blog, isPending, error } = useFetch('http://localhost:8000/blogs/' + id);
-    const history = useHistory();
+
+    const API_URI = process.env.REACT_APP_API_URI;
+    const { data: blog, isPending, error } = useFetch(API_URI + '/blogs/' + id);
+    //? replaced with useNavigation
+    // const history = useHistory();
+    const navigate = useNavigate();
     const handleClick = () => {
-        fetch('http://localhost:8000/blogs/' + blog.id, {
+        fetch(API_URI + '/blogs/' + blog.id, {
             method: "DELETE"
-        }).then(() => { history.push('/') })
+            //? instead of using useNavigation we were using history
+            // }).then(() => { history.push('/') })
+        }).then(() => { navigate('/') })
     }
     return (
         <div className="blog-details">
