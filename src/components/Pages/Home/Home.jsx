@@ -3,9 +3,8 @@ import BlogList from '../../props/BlogList';
 import useFetch from '../../Helpers/useFetch';
 
 const Home = () => {
-
-    const { data, isPending, error } = useFetch('http://localhost:8000/blogs');
-    console.log(data, data);
+    const API_URI = process.env.REACT_APP_API_URI;
+    const { data, isPending, error } = useFetch(API_URI + '/blogs');
 
 
 
