@@ -4,6 +4,7 @@ import useFetch from '../../Helpers/useFetch';
 
 const Home = () => {
     const API_URI = process.env.REACT_APP_API_URI;
+    console.log(API_URI);
     const { data, isPending, error } = useFetch(API_URI + '/blogs');
 
 
